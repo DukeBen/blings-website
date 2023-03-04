@@ -1,31 +1,42 @@
+import Contacts from "../Data/Contacts.json"
+
+
 
 function formatPhoneNumber(phoneNumber) {
     const cleaned = ('' + phoneNumber).replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    return '(' + match[1] + ') ' + match[2] + match[3];
     }
     return null;
 }
-
-// function isValidPhoneNumber(phoneNumber) {
-//     const phoneRegex = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)?\d{4}$/;
-//     return phoneRegex.test(phoneNumber);
-// }
 
 function isStringMadeOfLetters(str) {
     const pattern = /^[a-zA-Z]+$/;
     return pattern.test(str);
 }
 
-function containsStringIgnoringOrder(dWord, iWord) {
-    const dWords = dWord.split(' ').sort();
-    const iWords = iWord.split(' ').sort();
-    return dWords.join(' ').includes(iWords.join(' '));
-}
+// function containsStringIgnoringOrder(dWord, iWord) {
+//     const dWords = dWord.split(' ').sort();
+//     const iWords = iWord.split(' ').sort();
+//     return dWords.join(' ').includes(iWords.join(' '));
+// }
       
+function getAge(date)
+{
+    const today = new Date();
+    const birthDay = date.substring(0, 10);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+  
+    return age;
+}
 
-function SearchFunc(input)
+function SearchData(input)
 {
     const phone = "";
     const name = "";
@@ -41,8 +52,11 @@ function SearchFunc(input)
     {
         if(isStringMadeOfLetters(elem)) //instead of checking if a string is a number b/c input can vary and have non number chars
         {
-            name += elem;
-            //figure out how to filter json objects by name and using the containsStringIgnoringOrder method
+            if(name === "")
+                name += elem;
+            else
+                name = name + " " + elem;
+            Contacts = Contacts.filter(contact => contact.name.includes(name));
         }
         else
         {
@@ -52,13 +66,13 @@ function SearchFunc(input)
             }
             else if(elem.length() <=3){
                 age = elem;
-                //filter by age
+                Contacts = Contacts.filter(contact => getAge(contact.birthday) === age)
             }
             else{
-                phone = formatPhoneNumber(elem);
-                //filter by phone#
+                phoneNumber= formatPhoneNumber(elem);
+                Contacts = Contacts.filter(contact => phoneNumber === contact.phone_number);
             }
         }
     }
-    
+    return Contacts;
 }
