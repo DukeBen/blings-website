@@ -1,5 +1,7 @@
 import React from 'react'
 import  "./Styles.css"
+import {getAge} from "../Utils/SearchData";
+
 
 export default function Profile(props) {
   return (

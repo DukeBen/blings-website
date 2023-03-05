@@ -25,7 +25,8 @@ function isStringMadeOfLetters(str) {
 function getAge(date)
 {
     const today = new Date();
-    const birthDay = date.substring(0, 10);
+    let birthDate = date.substring(0, 10);
+    birthDate = new Date(birthDate);
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
   
@@ -36,11 +37,12 @@ function getAge(date)
     return age;
 }
 
-function SearchData(input)
+export function SearchData(input)
 {
-    const phone = "";
-    const name = "";
-    const age = "";
+    let retContacts = JSON.parse(JSON.stringify(Contacts))
+    let phone = "";
+    let name = "";
+    let age = "";
     
     const arr = input.split(" ");
     if(arr.length > 3) //can only take a max of 3 parameters
@@ -50,29 +52,36 @@ function SearchData(input)
 
     for(const elem of arr)
     {
+       // console.log(elem);
         if(isStringMadeOfLetters(elem)) //instead of checking if a string is a number b/c input can vary and have non number chars
         {
             if(name === "")
-                name += elem;
+                {name += elem;}
             else
-                name = name + " " + elem;
-            Contacts = Contacts.filter(contact => contact.name.includes(name));
+                {name = name + " " + elem;}            
+            retContacts = retContacts.filter(contact => contact.name.includes(name));
         }
         else
         {
-            if(elem.length() > 3 && elem.length() < 9) //input a number that isnt age or phone#
+
+            if(elem.length > 3 && elem.length < 9) //input a number that isnt age or phone#
             {
                 continue;
             }
-            else if(elem.length() <=3){
+            else if(elem.length <=3){
                 age = elem;
-                Contacts = Contacts.filter(contact => getAge(contact.birthday) === age)
+                console.log(age);
+                console.log(getAge("1977-07-23T05:05:50 -02:00"));
+                retContacts = retContacts.filter(contact => ("" + getAge(contact.birthday)) === age)
             }
             else{
-                phoneNumber= formatPhoneNumber(elem);
-                Contacts = Contacts.filter(contact => phoneNumber === contact.phone_number);
+                const phoneNumber = formatPhoneNumber(elem);
+                retContacts = retContacts.filter(contact => phoneNumber === contact.phone_number);
             }
         }
     }
-    return Contacts;
+    if(retContacts.length === 0) {
+        return "No contacts found";
+    }
+    return retContacts;
 }
