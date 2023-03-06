@@ -38,10 +38,11 @@ export default function Form() {
       {contacts != null && contacts.length > 0 ? (
         contacts.map((contact) => (
           <Profile
-            key={contact.id}
-            source={contact.source}
-            label={`${contact.name}`}
-            description={contact.age}
+            key = {contact._id}
+            source ={`${contact.picture}`}
+            label={contact.name}
+            birth = {contact.birthday}
+            description={'hello'}
           />
         ))
       ) : (

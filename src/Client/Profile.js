@@ -4,10 +4,11 @@ import {getAge} from "../Utils/SearchData";
 
 
 export default function Profile(props) {
+  let age = getAge(props.birth);
   return (
 
     <div class="container">
-        <img class="user-avatar" src= {props.source}/>
+        <img class="user-avatar" src= {window.location.origin + '/images/'+props.source}/>
 
         <div class="sub-container">
             <div class="label">
@@ -15,7 +16,7 @@ export default function Profile(props) {
             </div>
 
             <p class="description">
-                {props.description}
+                {age}
             </p>
         </div>
     </div>

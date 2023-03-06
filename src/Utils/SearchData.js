@@ -15,14 +15,8 @@ function isStringMadeOfLetters(str) {
     const pattern = /^[a-zA-Z]+$/;
     return pattern.test(str);
 }
-
-// function containsStringIgnoringOrder(dWord, iWord) {
-//     const dWords = dWord.split(' ').sort();
-//     const iWords = iWord.split(' ').sort();
-//     return dWords.join(' ').includes(iWords.join(' '));
-// }
       
-function getAge(date)
+export function getAge(date)
 {
     const today = new Date();
     let birthDate = date.substring(0, 10);
@@ -40,7 +34,6 @@ function getAge(date)
 export function SearchData(input)
 {
     let retContacts = JSON.parse(JSON.stringify(Contacts))
-    let phone = "";
     let name = "";
     let age = "";
     
