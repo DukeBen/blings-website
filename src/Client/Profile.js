@@ -2,9 +2,13 @@ import React from 'react'
 import  "./Styles.css"
 import {getAge} from "../Utils/SearchData";
 
+const displayNumber = (number) => {
+  return number.replace(/\D/g, '');
+}
 
 export default function Profile(props) {
   let age = getAge(props.birth);
+  let phoneNumber = displayNumber(props.number);
   return (
 
     <div class="container">
@@ -12,11 +16,11 @@ export default function Profile(props) {
 
         <div class="sub-container">
             <div class="label">
-                {props.name}
+                {props.name + ", " + age + ", " + phoneNumber}
             </div>
 
             <p class="description">
-                {age}
+                {props.address}
             </p>
         </div>
     </div>
