@@ -70,8 +70,8 @@ export function SearchData(input)
             }
             else if(elem.length <=3){
                 age = elem;
-                console.log(age);
-                console.log(getAge("1977-07-23T05:05:50 -02:00"));
+                //console.log(age);
+                //console.log(getAge("1977-07-23T05:05:50 -02:00"));
                 retContacts = retContacts.filter(contact => ("" + getAge(contact.birthday)) === age)
             }
             else{
@@ -81,7 +81,7 @@ export function SearchData(input)
         }
     }
     if(retContacts.length === 0) {
-        return "No contacts found";
+        return [];
     }
     return retContacts;
 }

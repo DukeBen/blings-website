@@ -3,7 +3,7 @@ import { SearchData } from '../Utils/SearchData';
 import Profile from './Profile';
 
 export default function Form() {
-  const [contacts, setContacts] = useState(null);
+  const [contacts, setContacts] = useState([]);
   const [submission, setSubmission] = useState('');
   const [search, setSearch] = useState('');
 
@@ -20,7 +20,8 @@ export default function Form() {
 
   const addProfiles = (entry) => {
     const foundContacts = SearchData(entry);
-    setContacts(foundContacts);
+    console.log(foundContacts);
+    setContacts(foundContacts.length > 0 ? foundContacts : []);
   };
 
   return (
@@ -34,21 +35,19 @@ export default function Form() {
       </form>
       {<p>Submitted Entry: {search}</p>}
       <div>
-        {contacts ? (
-          contacts.map((contact) => (
-            <Profile
-              key={contact.id}
-              source={contact.source}
-              label={`${contact.name}`}
-              description={contact.age}
-            />
-          ))
-        ) : (
-          <>
-          None
-          </>
-        )}
-      </div>
+      {contacts != null && contacts.length > 0 ? (
+        contacts.map((contact) => (
+          <Profile
+            key={contact.id}
+            source={contact.source}
+            label={`${contact.name}`}
+            description={contact.age}
+          />
+        ))
+      ) : (
+        <p>No contacts found.</p>
+  )}
+</div>
     </div>
   );
 }
