@@ -43,32 +43,29 @@ export function SearchData(input)
         return null;
     }
 
-    for(const elem of arr)
+    for(let elem of arr)
     {
-       // console.log(elem);
         if(isStringMadeOfLetters(elem)) //instead of checking if a string is a number b/c input can vary and have non number chars
         {
             if(name === "")
                 {name += elem;}
             else
                 {name = name + " " + elem;}            
-            retContacts = retContacts.filter(contact => contact.name.includes(name));
-        }
+                retContacts = retContacts.filter(contact => contact.name.split(' ').includes(name));
+            }
         else
         {
-
             if(elem.length > 3 && elem.length < 9) //input a number that isnt age or phone#
             {
-                continue;
+                return [];
             }
             else if(elem.length <=3){
                 age = elem;
-                //console.log(age);
-                //console.log(getAge("1977-07-23T05:05:50 -02:00"));
                 retContacts = retContacts.filter(contact => ("" + getAge(contact.birthday)) === age)
             }
             else{
                 const phoneNumber = formatPhoneNumber(elem);
+                console.log(phoneNumber);
                 retContacts = retContacts.filter(contact => phoneNumber === contact.phone_number);
             }
         }

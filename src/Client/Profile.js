@@ -12,7 +12,7 @@ export default function Profile(props) {
 
         <div class="sub-container">
             <div class="label">
-                {props.label}
+                {props.name}
             </div>
 
             <p class="description">
