@@ -29,8 +29,15 @@ export default function Form() {
     <div>
       <div>
         {
-          !submitted && <p>Welcome! 
-            Please input the name, age, and/or phone number of the person you are searching</p>
+          !submitted && (
+            <div>
+              <img src='https://www.bresslercompany.com/wp-content/uploads/2015/03/Yellow_Pages_Logo.png' />
+              <p className='intro'>
+                Welcome! <br />
+                Please input the name, age, and/or phone number of the person you are searching
+              </p>
+            </div>
+          )
         }
       </div>
       <form onSubmit={handleSubmit}>

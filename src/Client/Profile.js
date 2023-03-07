@@ -11,15 +11,15 @@ export default function Profile(props) {
   let phoneNumber = displayNumber(props.number);
   return (
 
-    <div class="container">
-        <img class="user-avatar" src= {window.location.origin + '/images/'+props.source}/>
+    <div className="container">
+        <img className="user-avatar" src= {window.location.origin + '/images/'+props.source}/>
 
-        <div class="sub-container">
-            <div class="label">
+        <div className="sub-container">
+            <div className="label">
                 {props.name + ", " + age + ", " + phoneNumber}
             </div>
 
-            <p class="description">
+            <p className="description">
                 {props.address}
             </p>
         </div>

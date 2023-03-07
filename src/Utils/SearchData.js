@@ -45,13 +45,13 @@ export function SearchData(input)
 
     for(let elem of arr)
     {
-        if(isStringMadeOfLetters(elem)) //instead of checking if a string is a number b/c input can vary and have non number chars
+        if(isStringMadeOfLetters(elem)) 
         {
             if(name === "")
-                {name += elem;}
+                {name += elem.toLowerCase();}
             else
-                {name = name + " " + elem;}            
-                retContacts = retContacts.filter(contact => contact.name.split(' ').includes(name));
+                {name = name + " " + elem;}     
+                retContacts = retContacts.filter(contact => (contact.name.toLowerCase() === name) || (contact.name.toLowerCase().split(' ').includes(name)));
             }
         else
         {
@@ -65,7 +65,6 @@ export function SearchData(input)
             }
             else{
                 const phoneNumber = formatPhoneNumber(elem);
-                console.log(phoneNumber);
                 retContacts = retContacts.filter(contact => phoneNumber === contact.phone_number);
             }
         }

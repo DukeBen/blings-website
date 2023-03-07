@@ -1,5 +1,6 @@
 *{
     font-family: "verdana";
+    text-align: center;
 }
 body {background-color: #FFBF00;}
 
@@ -22,4 +23,8 @@ body {background-color: #FFBF00;}
     border-radius: 50%;
     float: left;
     margin: 10px 10px;
+}
+
+.intro{
+    font-weight: bold;
 }
