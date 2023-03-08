@@ -12,7 +12,7 @@ export default function Profile(props) {
   return (
 
     <div className="container">
-        <img className="user-avatar" src= {window.location.origin + '/images/'+props.source}/>
+        <img className="user-avatar" src= {require("../../public/images/"+props.source)}/>
 
         <div className="sub-container">
             <div className="label">
