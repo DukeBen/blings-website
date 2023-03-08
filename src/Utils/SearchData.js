@@ -51,7 +51,7 @@ export function SearchData(input)
                 {name += elem.toLowerCase();}
             else
                 {name = name + " " + elem;}     
-                retContacts = retContacts.filter(contact => (contact.name.toLowerCase() === name) || (contact.name.toLowerCase().split(' ').includes(name)));
+                retContacts = retContacts.filter(contact => (contact.name.toLowerCase() === name) || (contact.name.toLowerCase().includes(name)));
             }
         else
         {
