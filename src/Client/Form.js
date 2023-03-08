@@ -27,11 +27,11 @@ export default function Form() {
 
   return (
     <div>
-      <div>
+      <img src='https://www.bresslercompany.com/wp-content/uploads/2015/03/Yellow_Pages_Logo.png' /> 
+      <div style={{height: submitted ? '76px' : '60px'}}>
         {
           !submitted && (
             <div>
-              <img src='https://www.bresslercompany.com/wp-content/uploads/2015/03/Yellow_Pages_Logo.png' />
               <p className='intro'>
                 Welcome! <br />
                 Please input the name, age, and/or phone number of the person you are searching
@@ -53,7 +53,7 @@ export default function Form() {
         contacts.map((contact) => (
           <Profile
             key = {contact._id}
-            source ={`${contact.picture}`}
+            source ={contact.picture}
             name={contact.name}
             birth = {contact.birthday}
             address={contact.address}
