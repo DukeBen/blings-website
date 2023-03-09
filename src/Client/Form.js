@@ -34,7 +34,7 @@ export default function Form() {
             <div>
               <p className='intro'>
                 Welcome! <br />
-                Please input the name, age, and/or phone number of the person you are searching
+                Please input the name, age, and/or phone number (any format is fine, just don't use a space delimiter) of the person you are searching
               </p>
             </div>
           )
