@@ -14,7 +14,6 @@ body {background-color: #FFBF00;}
 .sub-container{
     float: left;
     margin: 30px 10px;
-
 }
 
 .user-avatar{
@@ -27,4 +26,8 @@ body {background-color: #FFBF00;}
 
 .intro{
     font-weight: bold;
+}
+
+.label{
+    text-align:left;
 }
