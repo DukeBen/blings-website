@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchData } from '../Utils/SearchData';
 import Profile from './Profile';
 
@@ -7,6 +7,14 @@ export default function Form() {
   const [submission, setSubmission] = useState('');
   const [search, setSearch] = useState('');
   const [submitted, setSubmit] = useState(false);
+  const[myVar, setMyVar] = useState('');
+
+  useEffect(() => {
+    if (submission !== '') {
+      const timeReq = setTimeout(() => addProfiles(submission), 3000);
+      return () => clearTimeout(timeReq);
+    }
+  }, [submission]);
 
   const submissionChange = (e) => {
     setSubmission(e.target.value);
@@ -16,12 +24,13 @@ export default function Form() {
     e.preventDefault();
     setSearch(submission);
     setSubmission('');
-    addProfiles(submission);
+    //addProfiles(submission);
     setSubmit(true);
   };
 
-  const addProfiles = (entry) => {
-    const foundContacts = SearchData(entry);
+  const addProfiles = () => {
+    console.log(submission);
+    const foundContacts = SearchData(submission);
     setContacts(foundContacts.length > 0 ? foundContacts : []);
   };
 

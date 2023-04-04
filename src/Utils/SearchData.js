@@ -1,7 +1,5 @@
 import Contacts from "../Data/Contacts.json"
 
-
-
  function formatPhoneNumber(phoneNumber) {
     const cleaned = ('' + phoneNumber).replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
